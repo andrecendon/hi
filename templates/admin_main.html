@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Menu</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" type="text/css">    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding-top: 50px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .admin-info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .options a {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 5px;
+        }
+        .options a:hover {
+            background-color: #0056b3;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <a href="./"> <img class=" top-left" src="{{ url_for('static', filename='back.png') }}" ></a>
+         
+        <h1>Admin Menu</h1>
+        <div class="admin-info">
+            <p>Welcome, <strong>{{ current_user.username }}</strong></p>
+        </div>
+        <div class="options">
+            <a href="/add_videogame">Add Videogame</a>
+            <a href="/add_admin">Add Admin</a>
+            <a href="/sales">Sales</a>
+            <a href="/modify_videogame">Modify Videogame</a>
+        </div>
+    </div>
+    
+</body>
+</html>

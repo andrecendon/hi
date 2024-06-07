@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" type="text/css"> 
+    <style>
+        .sale-details {
+            background-color: #d4edda; /* Light green background */
+            color: #155724; /* Dark green text */
+            padding: 20px;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            max-width: 600px;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <a href="/search">
+        <img class="top-left" src="{{ url_for('static', filename='back.png') }}" >
+    </a>
+    <div class="sale-details">
+        <h2>Sale Details</h2>
+        <p><strong>Order Number:</strong> {{ sale.OrderNumber }}</p>
+        <p><strong>Date:</strong> {{ sale.date }}</p>
+        <p><strong>Price:</strong> ${{ sale.price }}</p>
+        <p><strong>Client ID:</strong> {{ sale.client }}</p>
+        <p><strong>Full Name:</strong> {{ sale.fullname }}</p>
+        <p><strong>Address:</strong> {{ sale.address }}</p>
+        <p><strong>Card Number:</strong> {{ sale.CardNumber }}</p>
+        <p><strong>Products:</strong> {{ products_id}}</p>
+
+    </div>
+</body>
+</html>

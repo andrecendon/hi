@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <style>
+        .sale-details {
+            background-color: #d4edda; 
+            color: #155724; 
+            padding: 20px;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            max-width: 600px;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+        }
+        .sale-details h2 {
+            margin-top: 0;
+        }
+        .top-left {
+            position: absolute;
+            width: 45px;
+            height: auto;
+            top: 20px;
+            left: 20px;
+        }
+        .text{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <a href="/admin_main">
+        <img class="top-left" src="{{ url_for('static', filename='back.png') }}" >
+    </a>
+    <h2 class="text">Sales Details</h2>
+    <p class="text">Total in sales: ${{total}}</p>
+    <ul>
+        {% for sale in sales_list %}
+        <li>
+            <div class="sale-details">
+                <p><strong>Order Number:</strong> {{ sale.OrderNumber }}</p>
+                <p><strong>Date:</strong> {{ sale.date }}</p>
+                <p><strong>Price:</strong> ${{ sale.price }}</p>
+                <p><strong>Client ID:</strong> {{ sale.client }}</p>
+                <p><strong>Full Name:</strong> {{ sale.fullname }}</p>
+                <p><strong>Address:</strong> {{ sale.address }}</p>
+                <p><strong>Card Number:</strong> {{ sale.CardNumber }}</p>
+                <p><strong>Products:</strong></p>
+                <ul>
+                {% for product in sale.products %}
+                    <li>{{ product.name }}</li>
+                {% endfor %}
+                </ul>
+
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Productos</title>
+    <!-- Incluye el CSS de Bootstrap -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" type="text/css">    <style>
+        .bottom-right {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+        }
+        .small-img {
+            width: 50px; /* Ajusta el tamaño de la imagen según tus necesidades */
+            height: auto;
+        }
+        .contador {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: lightgrey;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 50%;
+        }
+
+        .top-left{
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+       
+        .videogame {
+            background-color: lightgrey;
+            font-size: 18px;
+            text-align: left;
+            align-items: center;
+            margin-top: 30px;
+            margin: 20px;
+        }
+        .im {
+            width:70px;
+            height: auto;
+            margin: 10px;
+        }
+        .span {
+            border: 2px solid grey; 
+            size: 12px;
+            text-align: center;
+            align-items: center;
+            margin:10px;
+            border-radius: 5px;
+            animation: typing 0.5s steps(5, end), blink-caret .75s;
+
+        }
+        @keyframes typing {
+            from { width: 100 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: black }
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center">
+        
+        <h1>Search products</h1>
+        <div class="contador"> {{contador}}
+            <a href="/cart">
+                <img src="{{ url_for('static', filename='cart.png') }}" alt="Carrito de compras" class="small-img">
+            </a>
+        </div>
+        
+        <div class="top-left">
+           <a href="./">
+            
+            <img class="small-img" src="{{ url_for('static', filename='back.png') }}" >
+        </a>
+        </div>
+    <form class="col" method="GET" action="/search">
+        
+        <div class="form-group">
+            <label for="search">Search:</label>
+            <input type="text" id="search" name="query" class="form-control">
+        </div>
+        <a href="/search">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </a>
+
+    <script>
+        if ("{{ message }}".length > 0) {
+            document.write("<p class='span'>{{ message }}</p>");
+        }
+    </script>
+    
+   
+    </form>
+        <p></p>
+
+        {% for prod in results %}
+        <div class="bottom-left row videogame">
+        <p class="col">{{prod.name}} ( ${{prod.price}} )</p>
+        <a href="{{ url_for('siu', producto_id=prod.id) }}">
+            <img class="col im " src="{{ url_for('static', filename='add.png') }}" alt="Descripción de la imagen">
+        </a>
+        </div>
+        <p></p>
+        {% endfor %}
+
+        
+    </div>
+
+    <!-- Incluye el JavaScript de Bootstrap y sus dependencias -->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+    
+</body>
+</html>
+
+

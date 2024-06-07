@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" type="text/css">  
+<html lang="es">
+    <style>
+        .bottom-right {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+        }
+        .small-img {
+            width: 50px; /* Ajusta el tamaño de la imagen según tus necesidades */
+            height: auto;
+        }
+        
+        
+        .im {
+            width:50px;
+            height: auto;
+            margin: 10px;
+            margin-left: auto;
+           
+        }
+        .span {
+            border: 2px solid grey; 
+            size: 12px;
+            text-align: center;
+            align-items: center;
+            margin:10px;
+            border-radius: 5px;
+
+        }
+        
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping cart</title>
+</head>
+<body>
+    <div class="container text-center">
+        <p></p>
+        <h1 >Shopping cart</h1>
+        <p>User: {{ current_user.username }}</p>
+        <div class="top-left">
+            <a href="/search">
+             
+             <img class="small-img" src="{{ url_for('static', filename='back.png') }}" >
+         
+        </a>
+         </div>
+       
+        {% for product in current_user.cart %}
+        <div class="row videogame">
+        <p class="col-8">{{ product.name }}  (${{product.price}})</p>
+        <div class="text-align-right">
+        <a  class="col text-align-right" href="{{ url_for('siu2', producto_id=product.id) }}">
+            <img class="im" src="{{ url_for('static', filename='remove.png') }}" alt="Eliminar" >
+        </a></div>
+        </div>
+        <p></p>
+        {% endfor %}
+        <p></p>
+
+        {% if mensaje %}
+            <input value="Checkout" class="btn btn-primary">
+            
+            <div class="alert alert-danger" role="alert">
+                {{mensaje}}
+            </div>
+        {% endif %}
+        {% if not mensaje %}
+            <a href="/checkout">
+            <input value="Checkout" class="btn btn-primary">
+            </a>
+        {% endif %}
+
+       
+        <script>
+            // Obtener el valor de "mensaje" de la URL
+            var urlParams = new URLSearchParams(window.location.search);
+            var mensaje = urlParams.get('mensaje');
+        
+            // Verificar si "mensaje" está definido
+            if (mensaje !== None) {
+                document.write('<p>afsf</p>')
+                document.write('');
+            } else {
+                // Si no hay mensaje, simplemente mostrar el enlace a "/checkout"
+                document.write('<p>hola</p>');
+            }
+        </script>
+        
+        
+        
+    </div>
+    <!-- Agrega el enlace al JavaScript de Bootstrap -->
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" type="text/css">   
+        
+    
+</head>
+<body>
+    <div class="container">
+        <a href="/admin_main"> <img class=" top-left" src="{{ url_for('static', filename='back.png') }}" ></a>
+
+        <h1>Add Videogames</h1>
+        <form method="POST">
+            <div class="form-group">
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="id" class="form-label">ID:</label>
+                <input type="number" id="id" name="id" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="price" class="form-label">Price:</label>
+                <input type="number" id="price" step="0.01" name="price" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="description" class="form-label">Description:</label>
+                <textarea id="description" name="description" class="form-control" rows="4" cols="50"></textarea>
+            </div>
+           
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+        
+        {% if mensaje %}
+            <div class="alert" role="alert">
+                {{ mensaje }}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

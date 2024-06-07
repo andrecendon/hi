@@ -1,0 +1,22 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="es">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" type="text/css">  
+<head>
+    <meta charset="UTF-8">
+    <title>Productos</title>
+</head>
+<body>
+    <h1>Lista de Productos</h1>
+    <ul>
+        {% for producto in productos %}
+        {% for u in usuarios %}
+        <li>{{ producto.name }}</li> <li>{{ u.username }}</li>
+        {% endfor %}
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
