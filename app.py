@@ -12,8 +12,8 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your-secret-key'  # Clave secreta para la sesión
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///your_database.db'  # URL de la base de datos SQLite
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # Desactiva el seguimiento de modificaciones
-db = SQLAlchemy(app)  # Inicializa SQLAlchemy con la app Flask
-login_manager = LoginManager(app)  # Inicializa el gestor de login
+#db = SQLAlchemy(app)  # Inicializa SQLAlchemy con la app Flask
+#login_manager = LoginManager(app)  # Inicializa el gestor de login
 bootstrap = Bootstrap(app)  # Inicializa Bootstrap
 
 
