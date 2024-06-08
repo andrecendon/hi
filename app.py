@@ -1,5 +1,7 @@
 from flask import Flask
 from flask import render_template, request, flash, redirect, url_for, jsonify, abort
+from sqlalchemy import DateTime, ForeignKey, Integer, String
+from sqlalchemy.orm import relationship
 from flask_login import current_user, login_required,login_user, logout_user
 import atexit
 from datetime import datetime
